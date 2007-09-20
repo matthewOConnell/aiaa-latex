@@ -6,4 +6,4 @@ aiaa.bst
 sample.tex
 sample.pdf
 figure.pdf
-database.bib
+references.bib
