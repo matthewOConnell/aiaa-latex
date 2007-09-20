@@ -1,8 +1,8 @@
+Manifest.txt
 README.txt
-aiaa.dtx
-aiaa.ins
-aiaa.pdf
+aiaa-tc.cls
+aiaa.bst
 database.bib
-figure_magnet.pdf
 sample-eg.pdf
 sample.tex
+sample_fig.pdf
