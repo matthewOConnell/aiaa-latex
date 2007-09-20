@@ -1,0 +1,8 @@
+README.txt
+aiaa.dtx
+aiaa.ins
+aiaa.pdf
+database.bib
+figure_magnet.pdf
+sample-eg.pdf
+sample.tex
