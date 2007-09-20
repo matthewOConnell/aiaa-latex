@@ -1,6 +1,11 @@
-== 4.0.0 / 2007-09-18
+== 4.0.1 / 2007-09-19
 
-* Sripped down to bare minimum and built back up with pdflatex and ease of maintanence in mind.
+* Removed extraneous center environment from sample.tex
+
+== 4.0.0 / 2007-09-19
+
+* To allow maintenance, sripped down to bare minimum
+  and built back up assuming pdflatex
 
 == 3.6 / 200?-??-??
 
