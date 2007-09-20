@@ -43,7 +43,7 @@ pdflatex sample >> refresh-sample.log
 rm sample.{bbl,blg,aux,out,log} refresh-sample.log
 mv sample.pdf sample-eg.pdf
 
-# Make bundles
+# Make bundle
 
 mkdir $package-$version
 cp `cat Manifest.txt` $package-$version
