@@ -1,4 +1,5 @@
 Manifest.txt
+History.txt
 README.txt
 aiaa-tc.cls
 aiaa.bst
