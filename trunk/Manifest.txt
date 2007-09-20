@@ -2,7 +2,7 @@ Manifest.txt
 README.txt
 aiaa-tc.cls
 aiaa.bst
-database.bib
-sample-eg.pdf
 sample.tex
-sample_fig.pdf
+figure.pdf
+sample-eg.pdf
+database.bib
