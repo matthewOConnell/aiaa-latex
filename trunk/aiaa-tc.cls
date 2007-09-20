@@ -9,7 +9,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1994/12/01]
 
-\ProvidesClass{aiaa-tc}[2007/09/19 v4.0.0 AIAA technical conference paper]
+\ProvidesClass{aiaa-tc}[2007/09/20 v4.0.0 AIAA technical conference paper]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}%
                 \typeout{Unknown option: passing ``\CurrentOption"
