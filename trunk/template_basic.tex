@@ -1,48 +1,9 @@
-%
-% `template_basic.tex' - A bare-bones example of using the AIAA class.
-%                        For a more advanced usage, see `template_advanced.tex'.
-%
-% Typical processing for PostScript (PS) output:
-%
-%  latex template_basic
-%  latex template_basic   (repeat as needed to resolve references)
-%
-%  xdvi template_basic    (onscreen draft display)
-%  dvips template_basic   (postscript)
-%  gv template_basic.ps   (onscreen display)
-%  lpr template_basic.ps  (hardcopy)
-%
-% Note: With the above, only Encapsulated PostScript (EPS) images can be used.
-%
-% Typical processing for Portable Document Format (PDF) output:
-%
+\title{Bare-Bones AIAA Technical Conference Paper Example}
+
 %  pdflatex template_basic
-%  pdflatex template_basic      (repeat as needed to resolve references)
-%
-%  acroread template_basic.pdf  (onscreen display)
-%
-% Note: If you have EPS figures, you will need to use the epstopdf
-% script to convert them to a form compatible with PDF.   Depending
-% on your version of pdflatex, it accepts a variety of other image
-% formats such as JPG, TIF, PNG, and so forth -- check your documentation.
-%
-% If you do *not* specify suffixes when using the graphicx package's
-% \includegraphics command, latex and pdflatex will automatically select
-% the appropriate figure format from those available.  This allows you
-% to produce PS and PDF output from the same LaTeX source file.
-%
-% To generate a large format (e.g., 11"x17") PostScript copy for editing
-% purposes, use
-%
-%  dvips -x 1467 -O -0.65in,0.85in -t tabloid template_basic
-%
-% Copyright (C) 2004 by Bil.Kleb@NASA.Gov, Bill.Wood@NASA.Gov,
-% and ErichK@AIAA.org.
+%  pdflatex template_basic
 
-\documentclass[]{aiaa-tc}% add 'draft' option to show overfull boxes
-
- \title{Bare-Bones \LaTeX\ Template for\\
-        AIAA Technical Conference Papers}
+\documentclass[]{aiaa-tc} % add 'draft' option to show overfull boxes
 
  \author{
   First A. Author%
@@ -74,10 +35,10 @@
 \maketitle
 
 \begin{abstract}
-This is a bare-bones \LaTeX\ template of an AIAA technical conference paper.
-It is intended to demonstrate the bare minimum set of \LaTeX\ commands
+This is a bare-bones \LaTeX{} template of an AIAA technical conference paper.
+It is intended to demonstrate the bare minimum set of \LaTeX{} commands
 to produce an AIAA technical conference paper.
-To explore more \LaTeX\ capabilities, see the advanced template.
+To explore more \LaTeX{} capabilities, see the advanced template.
 For detailed AIAA layout and style guidelines, please refer to the AIAA
 author guide for paper submission, format, and other procedures.
 \end{abstract}
@@ -191,5 +152,3 @@ A place to recognize others.
 \end{thebibliography}
 
 \end{document}
-
-% $Id: template_basic.tex,v 1.4 2004/04/03 13:48:43 kleb Exp $

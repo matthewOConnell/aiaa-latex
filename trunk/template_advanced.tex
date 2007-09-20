@@ -1,65 +1,27 @@
-%
-% `template_advanced.tex' - An advanced example of using the AIAA class.
-%                           For a bare-bones usage, see `template_basic.tex'.
-%
-% Typical processing for PostScript (PS) output:
-%
-%  latex template_advanced
-%  bibtex template_advanced  (bibliography)
-%  makeindex -s nomencl.ist -o template_advanced.gls template_advanced.glo
-%                            (nomenclature)
-%  latex template_advanced   (repeat as needed to resolve references)
-%
-%  xdvi template_advanced    (onscreen draft display)
-%  dvips template_advanced   (postscript)
-%  gv template_advanced.ps   (onscreen display)
-%  lpr template_advanced.ps  (hardcopy)
-%
-% Note: With the above, only Encapsulated PostScript (EPS) images can be used.
-%
-% Typical processing for Portable Document Format (PDF) output:
-%
+\title{Advanced AIAA Technical Conference Paper Example}
+
 %  pdflatex template_advanced
-%  bibtex template_advanced    (bibliography)
+%  bibtex   template_advanced
 %  makeindex -s nomencl.ist -o template_advanced.gls template_advanced.glo
-%                              (nomenclature)
-%  pdflatex template_advanced  (repeat as needed to resolve references)
-%
-%  acroread template_advanced.pdf  (onscreen display)
-%
-% Note: If you have EPS figures, you will need to use the epstopdf
-% script to convert them to a form compatible with PDF.   Depending
-% on your version of pdflatex, it accepts a variety of other image
-% formats such as JPG, TIF, PNG, and so forth -- check your documentation.
-%
-% If you do *not* specify suffixes when using the graphicx package's
-% \includegraphics command, latex and pdflatex will automatically select
-% the appropriate figure format from those available.  This allows you
-% to produce PS and PDF output from the same LaTeX source file.
-%
-% To generate a large format (e.g., 11"x17") PostScript copy for editing
-% purposes, use
-%
-%  dvips -x 1467 -O -0.65in,0.85in -t tabloid template_advanced
-%
-% Copyright (C) 2004 by Bil.Kleb@NASA.Gov, Bill.Wood@NASA.Gov,
-% and ErichK@AIAA.org.
+%  pdflatex template_advanced
+%  pdflatex template_advanced
 
-\documentclass[]{aiaa-tc}% add 'draft' option to show overfull boxes
+\documentclass[]{aiaa-tc} % add 'draft' option to show overfull boxes
 
- \usepackage{varioref}%  smart page, figure, table, and equation referencing
- \usepackage{wrapfig}%   wrap figures/tables in text (i.e., Di Vinci style)
- \usepackage{threeparttable}% tables with footnotes
- \usepackage{dcolumn}%   decimal-aligned tabular math columns
- \usepackage{nomencl}%   nomenclature generation via makeindex
- \usepackage{subfigure}% subcaptions for subfigures
- \usepackage{subfigmat}% matrices of similar subfigures, aka small mulitples
- \usepackage{fancyvrb}%  extended verbatim environments
- \usepackage{lettrine}%  dropped capital letter at beginning of paragraph
- \usepackage[dvips]{dropping}% alternative dropped capital package
- \usepackage[colorlinks]{hyperref}%  hyperlinks [must be loaded after dropping]
+ \usepackage{varioref}       % smart page, figure, table, and equation referencing
+ \usepackage{wrapfig}        % wrap figures/tables in text (i.e., DiVinci style)
+ \usepackage{threeparttable} % tables with footnotes
 
- \title{Advanced AIAA Technical Conference Paper Template}
+ \usepackage{dcolumn}        % decimal-aligned tabular math columns
+   \newcolumntype{d}{D{.}{.}{-1}} % define decimal-aligned tabular math mode column
+
+ \usepackage{nomencl}        % nomenclature generation via makeindex
+   \makeglossary            % Collect nomenclature entries defined by \nomenclature commands [nomencl.sty]
+
+ \usepackage{fancyvrb}       % extended verbatim environments
+   \fvset{fontsize=\footnotesize,xleftmargin=2em} % defaults
+
+ \usepackage{lettrine}       % dropped capital letter at beginning of paragraph
 
  \author{
   First A. Author\thanks{Job Title, Department, Address, and AIAA Member Grade.}
@@ -77,15 +39,6 @@
  \AIAApapernumber{YEAR-NUMBER}
  \AIAAconference{Conference Name, Date, and Location}
  \AIAAcopyright{\AIAAcopyrightD{YEAR}}
-
- % Define decimal-aligned tabular math mode column [dcolumn.sty]
- \newcolumntype{d}{D{.}{.}{-1}}
-
- % Verbatim environment defaults [fancyvrb.sty]
- \fvset{fontsize=\footnotesize,xleftmargin=2em}
-
- % Collect nomenclature entries defined by \nomenclature commands [nomencl.sty]
- \makeglossary
 
  % Define commands to assure consistent treatment throughout document
  \newcommand{\eqnref}[1]{(\ref{#1})}
@@ -120,14 +73,6 @@ retrieve this package from the Comprehensive \TeX\ Archive Network
 (CTAN), which is located at \href{http://www.ctan.org}{www.ctan.org}.
 This package does not gracefully handle the AIAA class' \verb|submit|
 option.
-
-\dropping{2}{A}{\textsc{nd}} this is an example of a dropped capital
-letter at the beginning of a paragraph using the \package{dropping}
-package.
-This package is a bit less refined than the \package{lettrine} package,
-but some authors may already have it around if they used the old
-(unofficial) \LaTeX\ AIAA distribution.
-This package accommodates the AIAA class' \verb|submit| option.
 
 \begin{wrapfigure}{R}{0.3\linewidth}
  \includegraphics{figure_magnet}
@@ -169,7 +114,7 @@ reference mechanism provided by the \package{varioref} package.
 Of course, one would normally have the table integrated into the text
 that describes it.
 \begin{table}[p]
- \begin{center}
+ \centering
   \begin{threeparttable}
    \caption{This is an example of a \package{threeparttable} which uses the
      \package{dcolumn} package to allow for columns to be aligned on decimal
@@ -191,7 +136,6 @@ that describes it.
     \item[\ensuremath{\dagger}] A much shorter table footnote.
    \end{tablenotes}
   \end{threeparttable}
- \end{center}
 \end{table}
 
 Equation~\eqnref{e:displace} is serving as a demonstration of the
@@ -246,10 +190,7 @@ available for \LaTeX.
 Please see the documentation for each package for extended discussion or
 usage.
 
-% produces the bibliography section when processed by BibTeX
+\bibliographystyle{aiaa} % produces the bibliography section when processed by BibTeX
 \bibliography{database}
-\bibliographystyle{aiaa}
 
 \end{document}
-
-% $Id: template_advanced.tex,v 1.4 2004/04/03 13:48:43 kleb Exp $
