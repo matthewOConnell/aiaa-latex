@@ -1,9 +1,11 @@
 %%
-% AIAA class for technical conference papers.
+% AIAA class for technical conference papers
+%
 %  by Bil Kleb and Bill Wood
 %
 % TODO:
-% - references to section numbers
+% - handout option?
+% - submit option?
 
 \NeedsTeXFormat{LaTeX2e}[1994/12/01]
 
@@ -17,60 +19,114 @@
 \LoadClass[letterpaper,twoside,10pt]{article}
 
 %%
-% page layout
+% Font
 
-\RequirePackage[margin=1in,top=0.75in,headheight=\baselineskip]{geometry}
+\RequirePackage{times}
 
 %%
-% accommodate images
+% Page layout
 
-\RequirePackage{graphicx}
+\RequirePackage[tmargin=0.25in,
+                headheight=0.50in,
+                headsep=0.25in,
+                lmargin=1in,
+                rmargin=1in,
+                footskip=0.25in,
+                bmargin=0.75in]{geometry}
 
-% defaults
-\setkeys{Gin}{ width=\linewidth, totalheight=\textheight, keepaspectratio }
+%%
+% Footnotes
 
-\RequirePackage{overcite}% superscript, sorted, compressed citation commands
+\renewcommand\thefootnote{\@fnsymbol\c@footnote}
 
-\RequirePackage{lastpage}% to get reference for last page number
+%%
+% Page style (headers and footers)
 
 \RequirePackage{fancyhdr}% simple control of headers and footers
-
-\def\fps@figure{htbp}
-\def\fps@table{htbp}
-
-\fancyhf{}% clear defaults
-\renewcommand{\headrulewidth}{0pt}% turn off default headrule
+\RequirePackage{lastpage}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
 \cfoot{\footnotesize\normalfont
        \thepage~of~\pageref{LastPage}\\
        \rule[.2\baselineskip]{0.5in}{0.2pt}\\
         American Institute of Aeronautics and Astronautics}
-
 \pagestyle{fancy}
+
+%%
+% Title block -- original from article.cls
+
+\renewcommand\maketitle{\par
+  \begingroup
+    \newpage
+    \global\@topnum\z@
+    \@maketitle
+    \@thanks
+  \endgroup
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+}
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let\footnote\thanks
+    {\LARGE \@title \par}%
+    \vskip 1.5em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+
+%%
+% Abstract environment
 
 \renewenvironment{abstract}%
   {\small\quotation\bfseries}%
   {\normalfont\endquotation\normalsize}
 
+%%
+% Images
+
+\RequirePackage{graphicx}
+\setkeys{Gin}{ width=\linewidth, totalheight=\textheight, keepaspectratio }
+
+%%
+% Captions - original from latex.ltx
+
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
-  \sbox\@tempboxa{\footnotesize\bfseries #1.~~#2}%
+  \sbox\@tempboxa{\footnotesize\bfseries #1\@. #2}%
   \ifdim \wd\@tempboxa >\hsize
-    \footnotesize\bfseries #1.~~#2\par
+    \footnotesize\bfseries #1\@. #2\par
   \else
     \global \@minipagefalse
     \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
   \fi
   \vskip\belowcaptionskip}
-
 \setlength\belowcaptionskip{5pt plus 1pt minus 1pt}
 
-\renewcommand\thesection      {\@Roman\c@section}
-\renewcommand\thesubsection   {\@Alph\c@subsection}
-\renewcommand\thesubsubsection{\@arabic\c@subsubsection}
-\renewcommand\theparagraph    {\@alph\c@paragraph}
-\renewcommand\thesubparagraph {\@roman\c@subparagraph}
-\setcounter{secnumdepth}{3}% no counters \paragraph and below
-\def\@seccntformat#1{\csname the#1\endcsname.\quad}
+%%
+% Section headers - original from article.cls
+
+\setcounter{secnumdepth}{3}
+
+\renewcommand\thesection      {\@Roman\c@section.}
+\renewcommand\thesubsection   {\@Alph\c@subsection.}
+\renewcommand\thesubsubsection{\@arabic\c@subsubsection.}
 
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                                      {3.5ex \@plus -1ex \@minus -.2ex}%
@@ -84,17 +140,39 @@
                                        {-3.25ex\@plus -1ex \@minus -.2ex}%
                                        {1.5ex \@plus .2ex}%
                                        {\normalfont\normalsize\itshape}}
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                      {2.25ex \@plus1ex \@minus.2ex}%
-                                      {-1em}%
-                                      {\normalfont\normalsize\scshape}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-                                         {2.25ex \@plus1ex \@minus .2ex}%
-                                         {-1em}%
-                                         {\normalfont\normalfont}}
+\renewcommand\paragraph{\@latex@error{Section level \noexpand\paragraph unavailable}\@eha}
+\renewcommand\subparagraph{\@latex@error{Section level \noexpand\subparagraph unavailable}\@eha}
 
-\renewcommand{\@biblabel}[1]{$^{#1}$}
+%%
+% Colors
 
+\RequirePackage{color}
+  \definecolor{darkblue}{rgb}{0.0,0.0,0.5}
+
+%%
+% Hyperlinks
+
+\RequirePackage[hyperfootnotes=false,
+                hyperfigures,
+                breaklinks,
+                colorlinks,
+                urlcolor=darkblue,
+                filecolor=darkblue,
+                citecolor=black,
+                linkcolor=black,
+                pagecolor=black,
+                menucolor=black,
+                anchorcolor=black]{hyperref}
+
+%%
+% References
+
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage{hypernat}
+  \bibpunct{}{}{,}{s}{}{} % superscript citation
+
+% superscript reference list -- original from article.cls
+\renewcommand{\@biblabel}[1]{\textsuperscript#1}
 \renewenvironment{thebibliography}[1]%
      {\section*{\refname}
       \list{\@biblabel{\@arabic\c@enumiv}}%
@@ -108,10 +186,18 @@
             \usecounter{enumiv}%
             \let\p@enumiv\@empty%
             \renewcommand\theenumiv{\@arabic\c@enumiv}%
-            \footnotesize%
-            }
-      \sloppy\clubpenalty4000\widowpenalty4000%
+            \footnotesize}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
       \sfcode`\.\@m}
       {\def\@noitemerr
         {\@latex@warning{Empty `thebibliography' environment}}%
-      \endlist}
+     \endlist}
+
+%%
+% Floats -- make 'h' placement default
+
+\def\fps@figure{htbp}
+\def\fps@table{htbp}
