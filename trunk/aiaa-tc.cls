@@ -3,7 +3,7 @@
 %  by Bil Kleb and Bill Wood
 %
 % TODO:
-% - item
+% - references to section numbers
 
 \NeedsTeXFormat{LaTeX2e}[1994/12/01]
 
@@ -96,8 +96,7 @@
 \renewcommand{\@biblabel}[1]{$^{#1}$}
 
 \renewenvironment{thebibliography}[1]%
-     {\section*{\refname\@mkboth{\MakeUppercase\refname}%
-                                 {\MakeUppercase\refname}}%
+     {\section*{\refname}
       \list{\@biblabel{\@arabic\c@enumiv}}%
            {\setlength{\leftmargin}{0pt}%
             \settowidth{\labelwidth}{\@biblabel{#1}}%
