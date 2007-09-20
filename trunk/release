@@ -41,7 +41,6 @@ bibtex   sample >> refresh-sample.log
 pdflatex sample >> refresh-sample.log
 pdflatex sample >> refresh-sample.log
 rm sample.{bbl,blg,aux,out,log} refresh-sample.log
-mv sample.pdf sample-eg.pdf
 
 # Make bundle
 
