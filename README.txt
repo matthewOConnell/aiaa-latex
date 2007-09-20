@@ -1,6 +1,6 @@
 Hi,
 
-Welcome to the AIAA LaTeX package to help you produce AIAA
+Welcome to the AIAA LaTeX bundle to help you produce AIAA
 technical conference papers.
 
 == Quick Start
