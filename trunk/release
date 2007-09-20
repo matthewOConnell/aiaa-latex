@@ -40,7 +40,7 @@ pdflatex sample >  refresh-sample.log
 bibtex   sample >> refresh-sample.log
 pdflatex sample >> refresh-sample.log
 pdflatex sample >> refresh-sample.log
-rm sample.{bbl,blg,aux,out,log} refresh-sample.log
+rm sample.{bbl,blg,aux,log} refresh-sample.log
 
 # Make bundle
 
